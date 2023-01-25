@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Switch, TouchableOpacity, TextInput } from 'react-native';
+import { ScrollView, Text, View, Switch, TouchableOpacity, TextInput } from 'react-native';
 import { useState } from 'react';
 import NumericInput from 'react-native-numeric-input';
 import { RadioButton } from 'react-native-paper';
