@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, Text, View, Switch, TouchableOpacity, TextInput, Animated } from 'react-native';
+import { ScrollView, Text, View, Switch, TouchableOpacity, TextInput } from 'react-native';
 import { useRef, useState } from 'react';
 import NumericInput from 'react-native-numeric-input';
 import { RadioButton } from 'react-native-paper';
@@ -17,16 +17,9 @@ export default function App() {
 
   const info = isDarkMode ? "Lightmode" : "Darkmode";
 
-  const anim = useRef(new Animated.Value(0)).current;
+  
+  
 
-  function Animation() {
-    Animated.timing(anim, {
-      toValue: 50,
-      duration: 1500,
-      useNativeDriver: false
-    }).start();
-  }
-  Animation();
 
   const calculate = (e) => {
     const litres = bottles * 0.33;
@@ -39,7 +32,7 @@ export default function App() {
     const ratio = gender === 'male' ? 0.7 : 0.6;
     promille =  gramsLeft / (weight * ratio);
 
-    if (!weight || !time || !bottles) 
+    if (!time || !bottles) 
       return;
 
     if (weight <= 0) 
@@ -49,6 +42,24 @@ export default function App() {
       promille = 0;
     }
     setResult(promille);
+  };
+
+  const getResultColor = (result) => {
+    if (result == 0) {
+      return {color: 'black'}
+    }
+    else if (result <= 0.40) {
+      return { color: 'green' };
+    } 
+    else if (result >= 0.41 && result <= 0.99) {
+      return { color: 'yellow' };
+    } 
+    else if (result >= 1) {
+      return { color: 'red' };
+    } 
+    else {
+      return {};
+    }
   };
 
   return (
@@ -62,7 +73,7 @@ export default function App() {
           onValueChange={newValue => setIsDarkMode(newValue)} />
 
       </View>
-      <Animated.Text style={[styles.title, isDarkMode && styles.darkMode, { fontSize: anim }]}>Alcometer</Animated.Text>
+      <Text style={[styles.title, isDarkMode && styles.darkMode]}>Alcometer</Text>
 
       <Text style={styles.text}>Weight</Text>
       <TextInput
@@ -89,10 +100,10 @@ export default function App() {
         </View>
       </RadioButton.Group>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText} onPress={calculate}>Calculate</Text>
+      <TouchableOpacity style={styles.button} onPress={calculate}>
+        <Text style={styles.buttonText} >Calculate</Text>
       </TouchableOpacity>
-      <Text style={styles.result}>{result.toFixed(2)}</Text>
+      <Text style={[styles.result, getResultColor(result)]}>{result.toFixed(2)}</Text>
       <StatusBar style="auto" />
     </View>
     </ScrollView>

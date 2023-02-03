@@ -24,7 +24,6 @@ export default StyleSheet.create({
     title: {
         fontSize: 50,
         paddingBottom: 30,
-
     },
     switchRow: {
         paddingTop: 20,
@@ -64,10 +63,5 @@ export default StyleSheet.create({
     },
     result: {
         fontWeight: 'bold',
-
-    },
-    numericInput: {
-        backgroundColor: 'pink',
-        
     }
 });
