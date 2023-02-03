@@ -44,14 +44,17 @@ export default StyleSheet.create({
     button: {
         borderWidth: 1,
         borderRadius: 5,
-        height: 40,
-        width: 90,
+        height: 60,
+        width: 120,
         marginTop: 10,
         marginBottom: 20,
-        padding: 10,
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: 'white',
     },
+    buttonText:{
+        fontSize: 20
+    },  
     text: {
         fontWeight: 'bold',
         padding: 15
@@ -64,6 +67,7 @@ export default StyleSheet.create({
 
     },
     numericInput: {
-        backgroundColor: 'pink'
+        backgroundColor: 'pink',
+        
     }
 });
