@@ -63,5 +63,7 @@ export default StyleSheet.create({
     },
     result: {
         fontWeight: 'bold',
+        fontSize:20,
+        padding: 10,
     }
 });

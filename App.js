@@ -17,10 +17,6 @@ export default function App() {
 
   const info = isDarkMode ? "Lightmode" : "Darkmode";
 
-  
-  
-
-
   const calculate = (e) => {
     const litres = bottles * 0.33;
     const grams = litres * 8 * 4.5;
@@ -71,8 +67,8 @@ export default function App() {
           style={styles.switch}
           value={isDarkMode}
           onValueChange={newValue => setIsDarkMode(newValue)} />
-
       </View>
+      
       <Text style={[styles.title, isDarkMode && styles.darkMode]}>Alcometer</Text>
 
       <Text style={styles.text}>Weight</Text>
